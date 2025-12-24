@@ -264,7 +264,7 @@ export default function Home() {
       <section id="benefits" className="py-24 bg-stone-100 dark:bg-stone-900 text-foreground relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="font-heading text-4xl font-bold text-foreground">Why Kumu Choose Hula Binder</h2>
+            <h2 className="font-heading text-4xl font-bold text-foreground">Why Kumu Choose The Hula Binder</h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
