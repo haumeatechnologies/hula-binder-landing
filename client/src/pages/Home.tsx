@@ -20,6 +20,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import heroImage from '@assets/Screenshot_2025-12-24_at_12.32.20_PM_1766615579256.png';
+import logoImage from '@assets/Screenshot_2025-12-24_at_1.26.50_PM_1766618920179.png';
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -54,7 +55,7 @@ export default function Home() {
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <img 
-              src="/attached_assets/Screenshot_2025-12-24_at_1.26.50_PM_1766618920179.png" 
+              src={logoImage} 
               alt="The Hula Binder Logo" 
               className="h-12 w-auto drop-shadow-lg"
             />
