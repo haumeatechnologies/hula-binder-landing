@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertContactRequestSchema } from "@shared/schema";
+import { insertContactRequestSchema, insertPlanRequestSchema } from "@shared/schema";
 import { fromError } from "zod-validation-error";
 
 export async function registerRoutes(
@@ -9,14 +9,11 @@ export async function registerRoutes(
   app: Express
 ): Promise<Server> {
   
-  // Contact form submission
+  // Contact form submission (Demo Request)
   app.post("/api/contact", async (req, res) => {
     try {
       const validatedData = insertContactRequestSchema.parse(req.body);
       const contactRequest = await storage.createContactRequest(validatedData);
-      
-      // TODO: Send email notification to arleen@haumeatechnologies.com
-      // using Resend once the connector is set up
       
       res.status(201).json({
         success: true,
@@ -36,6 +33,34 @@ export async function registerRoutes(
       res.status(500).json({
         success: false,
         error: "Failed to submit demo request"
+      });
+    }
+  });
+
+  // Plan signup form submission
+  app.post("/api/plan-signup", async (req, res) => {
+    try {
+      const validatedData = insertPlanRequestSchema.parse(req.body);
+      const planRequest = await storage.createPlanRequest(validatedData);
+      
+      res.status(201).json({
+        success: true,
+        data: planRequest,
+        message: "Plan request received successfully"
+      });
+    } catch (error: any) {
+      if (error.name === 'ZodError') {
+        const validationError = fromError(error);
+        return res.status(400).json({
+          success: false,
+          error: validationError.toString()
+        });
+      }
+      
+      console.error("Error creating plan request:", error);
+      res.status(500).json({
+        success: false,
+        error: "Failed to submit plan request"
       });
     }
   });

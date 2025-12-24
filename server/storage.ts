@@ -1,4 +1,4 @@
-import { users, contactRequests, type User, type InsertUser, type ContactRequest, type InsertContactRequest } from "@shared/schema";
+import { users, contactRequests, planRequests, type User, type InsertUser, type ContactRequest, type InsertContactRequest, type PlanRequest, type InsertPlanRequest } from "@shared/schema";
 import { db } from "./db";
 import { eq } from "drizzle-orm";
 
@@ -7,6 +7,7 @@ export interface IStorage {
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
   createContactRequest(request: InsertContactRequest): Promise<ContactRequest>;
+  createPlanRequest(request: InsertPlanRequest): Promise<PlanRequest>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -34,6 +35,14 @@ export class DatabaseStorage implements IStorage {
       .values(request)
       .returning();
     return contactRequest;
+  }
+
+  async createPlanRequest(request: InsertPlanRequest): Promise<PlanRequest> {
+    const [planRequest] = await db
+      .insert(planRequests)
+      .values(request)
+      .returning();
+    return planRequest;
   }
 }
 

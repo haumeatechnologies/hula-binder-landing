@@ -78,19 +78,17 @@ export default function PlanSignup() {
     setIsSubmitting(true);
     
     try {
-      const formData = new URLSearchParams();
-      formData.append("form-name", "plan-signup");
-      formData.append("name", values.name);
-      formData.append("halauName", values.halauName);
-      formData.append("email", values.email);
-      formData.append("phone", values.phone || "");
-      formData.append("plan", values.plan);
-      formData.append("message", values.message || "");
-
-      const response = await fetch("/", {
+      const response = await fetch("/api/plan-signup", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: formData.toString(),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: values.name,
+          halauName: values.halauName,
+          email: values.email,
+          phone: values.phone || null,
+          plan: values.plan,
+          message: values.message || null,
+        }),
       });
 
       if (response.ok) {
