@@ -167,7 +167,7 @@ export default function Home() {
               { 
                 icon: Users, 
                 title: "Haumāna Management", 
-                desc: "Comprehensive profiles, progress tracking, and online registration forms." 
+                desc: "Comprehensive profiles, progress tracking, tuition payments and online registration forms." 
               },
               { 
                 icon: Check, 
