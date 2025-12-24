@@ -311,7 +311,7 @@ export default function Home() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <ul className="space-y-3">
-                  {['Up to 30 Students', 'Online Registration', 'Attendance Tracking', 'Tuition Payments', 'Curriculum Documentation', 'Email Support'].map((item, i) => (
+                  {['Up to 30 Students', 'Online Registration', 'Attendance Tracking', 'Online Tuition Payment', 'Curriculum Documentation', 'Email Support'].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm">
                       <Check className="w-4 h-4 text-primary" />
                       <span>{item}</span>
