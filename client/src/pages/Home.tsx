@@ -368,7 +368,7 @@ export default function Home() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <ul className="space-y-3">
-                  {['Unlimited Students', 'Multiple Locations', 'API Access', 'Quarterly Success Review', '4-hour Response Time'].map((item, i) => (
+                  {['Unlimited Students', 'Multiple Locations', 'Quarterly Success Review', '4-hour Response Time'].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm">
                       <Check className="w-4 h-4 text-primary" />
                       <span>{item}</span>
