@@ -182,7 +182,7 @@ export default function Home() {
               { 
                 icon: MessageCircle, 
                 title: "Communication Hub", 
-                desc: "Direct messaging with students and parents, announcements, and photo sharing." 
+                desc: "Direct messaging with students and parents and announcements." 
               },
               { 
                 icon: Video, 
