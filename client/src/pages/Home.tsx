@@ -49,46 +49,46 @@ export default function Home() {
   return (
     <div className="min-h-screen font-sans bg-background text-foreground overflow-x-hidden selection:bg-primary/20">
       
-      {/* Navigation */}
-      <nav className="fixed w-full z-50 bg-background/90 backdrop-blur-md border-b border-border/50">
+      {/* Navigation - Transparent over hero */}
+      <nav className="fixed w-full z-50 bg-black/30 backdrop-blur-sm">
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
              {/* Abstract Leaf/Gourd Icon */}
-            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground">
+            <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
                 <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
                 <path d="M8 12c0-2 2-4 4-4s4 2 4 4" />
               </svg>
             </div>
-            <span className="font-heading font-bold text-xl tracking-tight text-primary">The Hula Binder</span>
+            <span className="font-heading font-bold text-xl tracking-tight text-white drop-shadow-md">The Hula Binder</span>
           </div>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            <button onClick={() => scrollToSection('features')} className="text-sm font-medium hover:text-primary transition-colors">Features</button>
-            <button onClick={() => scrollToSection('benefits')} className="text-sm font-medium hover:text-primary transition-colors">Benefits</button>
-            <button onClick={() => scrollToSection('pricing')} className="text-sm font-medium hover:text-primary transition-colors">Pricing</button>
+            <button onClick={() => scrollToSection('features')} className="text-sm font-medium text-white/90 hover:text-white transition-colors drop-shadow-sm">Features</button>
+            <button onClick={() => scrollToSection('benefits')} className="text-sm font-medium text-white/90 hover:text-white transition-colors drop-shadow-sm">Benefits</button>
+            <button onClick={() => scrollToSection('pricing')} className="text-sm font-medium text-white/90 hover:text-white transition-colors drop-shadow-sm">Pricing</button>
             <Link href="/contact">
-              <Button className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20">
+              <Button className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border border-white/30 shadow-lg">
                 Get Started
               </Button>
             </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
-          <button className="md:hidden p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button className="md:hidden p-2 text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
         {/* Mobile Nav */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-20 left-0 w-full bg-background border-b border-border p-6 flex flex-col gap-4 animate-in slide-in-from-top-5">
-            <button onClick={() => scrollToSection('features')} className="text-left font-medium py-2">Features</button>
-            <button onClick={() => scrollToSection('benefits')} className="text-left font-medium py-2">Benefits</button>
-            <button onClick={() => scrollToSection('pricing')} className="text-left font-medium py-2">Pricing</button>
+          <div className="md:hidden absolute top-20 left-0 w-full bg-black/80 backdrop-blur-md border-b border-white/10 p-6 flex flex-col gap-4 animate-in slide-in-from-top-5">
+            <button onClick={() => scrollToSection('features')} className="text-left font-medium py-2 text-white">Features</button>
+            <button onClick={() => scrollToSection('benefits')} className="text-left font-medium py-2 text-white">Benefits</button>
+            <button onClick={() => scrollToSection('pricing')} className="text-left font-medium py-2 text-white">Pricing</button>
             <Link href="/contact">
-              <Button className="w-full bg-primary text-white">Get Started</Button>
+              <Button className="w-full bg-white/20 text-white border border-white/30">Get Started</Button>
             </Link>
           </div>
         )}
