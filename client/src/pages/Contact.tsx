@@ -124,7 +124,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Your Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="Kumu Leilani" {...field} />
+                            <Input placeholder="Kumu Hula" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -137,7 +137,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Hālau Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="Hālau O..." {...field} />
+                            <Input placeholder="Hālau Hula" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
