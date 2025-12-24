@@ -19,7 +19,7 @@ import { Link } from "wouter";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
-import heroImage from '@assets/generated_images/kahiko_dancers_modest_dress.png';
+import heroImage from '@assets/generated_images/kahiko_left_palms_down.png';
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
