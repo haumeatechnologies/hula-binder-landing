@@ -198,7 +198,7 @@ export default function Home() {
               <motion.div key={i} variants={fadeIn}>
                 <Card className="h-full border-none shadow-md hover:shadow-xl transition-shadow duration-300 bg-card">
                   <CardHeader>
-                    <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-4 text-primary">
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 text-primary">
                       <feature.icon className="w-6 h-6" />
                     </div>
                     <CardTitle className="font-heading text-xl">{feature.title}</CardTitle>
