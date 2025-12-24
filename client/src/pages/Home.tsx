@@ -438,7 +438,7 @@ export default function Home() {
           
           <div className="border-t border-stone-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-stone-500">
             <p>&copy; {new Date().getFullYear()} The Hula Binder. All rights reserved.</p>
-            <p>Made with aloha.</p>
+            <p>Site Design by <a href="https://haumeatechnologies.com/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Haumea Technologies</a></p>
           </div>
         </div>
       </footer>
