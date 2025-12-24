@@ -19,7 +19,7 @@ import { Link } from "wouter";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
-import heroVideo from '@assets/generated_videos/three_hula_kahiko_dancers.mp4';
+import heroVideo from '@assets/generated_videos/three_hula_dancers_cream_skirts.mp4';
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
