@@ -19,7 +19,7 @@ import { Link } from "wouter";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
-import heroVideo from '@assets/generated_videos/front_view_kahiko_palapalai.mp4';
+import heroImage from '@assets/generated_images/hula_dancers_cream_palapalai.png';
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -94,21 +94,17 @@ export default function Home() {
         )}
       </nav>
 
-      {/* Hero Section with Video Background */}
+      {/* Hero Section with Image Background */}
       <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
-        {/* Video Background */}
+        {/* Image Background */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-black/40 z-10" /> {/* Overlay for text readability */}
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-black/20 z-10" />
-          <video 
-            autoPlay 
-            muted 
-            loop 
-            playsInline
+          <img 
+            src={heroImage}
+            alt="Hula dancers performing kahiko at Merrie Monarch"
             className="w-full h-full object-cover"
-          >
-            <source src={heroVideo} type="video/mp4" />
-          </video>
+          />
         </div>
 
         <div className="container relative z-20 px-6 text-center text-white max-w-4xl mx-auto">
