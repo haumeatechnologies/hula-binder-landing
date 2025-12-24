@@ -319,7 +319,9 @@ export default function Home() {
                 </ul>
               </CardContent>
               <CardFooter className="pt-8">
-                <Button className="w-full" variant="outline">Select Starter</Button>
+                <Link href="/signup?plan=starter">
+                  <Button className="w-full" variant="outline">Select Starter</Button>
+                </Link>
               </CardFooter>
             </Card>
 
@@ -347,7 +349,9 @@ export default function Home() {
                 </ul>
               </CardContent>
               <CardFooter className="pt-8">
-                <Button className="w-full bg-primary hover:bg-primary/90 text-white">Select Professional</Button>
+                <Link href="/signup?plan=professional">
+                  <Button className="w-full bg-primary hover:bg-primary/90 text-white">Select Professional</Button>
+                </Link>
               </CardFooter>
             </Card>
 
@@ -372,7 +376,9 @@ export default function Home() {
                 </ul>
               </CardContent>
               <CardFooter className="pt-8">
-                <Button className="w-full" variant="outline">Select Enterprise</Button>
+                <Link href="/signup?plan=enterprise">
+                  <Button className="w-full" variant="outline">Select Enterprise</Button>
+                </Link>
               </CardFooter>
             </Card>
           </div>
