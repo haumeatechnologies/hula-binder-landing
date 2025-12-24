@@ -271,30 +271,27 @@ export default function Home() {
       </section>
 
       {/* Benefits Section */}
-      <section id="benefits" className="py-24 bg-primary text-white relative overflow-hidden">
-        {/* Pattern Overlay */}
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
-        
+      <section id="benefits" className="py-24 bg-stone-100 dark:bg-stone-900 text-foreground relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="font-heading text-4xl font-bold">Why Kumu Choose Hula Binder</h2>
+            <h2 className="font-heading text-4xl font-bold text-foreground">Why Kumu Choose Hula Binder</h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
-              <Clock className="w-12 h-12 mx-auto mb-4 text-secondary-foreground" />
-              <h3 className="font-heading text-xl font-bold mb-3">Save Time</h3>
-              <p className="text-white/80">Reduce administrative work by 5-10 hours per week, giving you more time to teach.</p>
+            <div className="text-center p-8 rounded-2xl bg-background border border-border shadow-sm hover:shadow-md transition-shadow">
+              <Clock className="w-12 h-12 mx-auto mb-4 text-primary" />
+              <h3 className="font-heading text-xl font-bold mb-3 text-foreground">Save Time</h3>
+              <p className="text-muted-foreground">Reduce administrative work by 5-10 hours per week, giving you more time to teach.</p>
             </div>
-            <div className="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
-              <Heart className="w-12 h-12 mx-auto mb-4 text-secondary-foreground" />
-              <h3 className="font-heading text-xl font-bold mb-3">Improve Retention</h3>
-              <p className="text-white/80">Better communication and engagement tracking helps identify at-risk students early.</p>
+            <div className="text-center p-8 rounded-2xl bg-background border border-border shadow-sm hover:shadow-md transition-shadow">
+              <Heart className="w-12 h-12 mx-auto mb-4 text-primary" />
+              <h3 className="font-heading text-xl font-bold mb-3 text-foreground">Improve Retention</h3>
+              <p className="text-muted-foreground">Better communication and engagement tracking helps identify at-risk students early.</p>
             </div>
-            <div className="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
-              <Award className="w-12 h-12 mx-auto mb-4 text-secondary-foreground" />
-              <h3 className="font-heading text-xl font-bold mb-3">Preserve Legacy</h3>
-              <p className="text-white/80">Systematically document your teachings and choreography for future generations.</p>
+            <div className="text-center p-8 rounded-2xl bg-background border border-border shadow-sm hover:shadow-md transition-shadow">
+              <Award className="w-12 h-12 mx-auto mb-4 text-primary" />
+              <h3 className="font-heading text-xl font-bold mb-3 text-foreground">Preserve Legacy</h3>
+              <p className="text-muted-foreground">Systematically document your teachings and choreography for future generations.</p>
             </div>
           </div>
         </div>
