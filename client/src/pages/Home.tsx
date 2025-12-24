@@ -53,13 +53,11 @@ export default function Home() {
       <nav className="fixed w-full z-50 bg-black/30 backdrop-blur-sm">
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
-             {/* Abstract Leaf/Gourd Icon */}
-            <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
-                <path d="M8 12c0-2 2-4 4-4s4 2 4 4" />
-              </svg>
-            </div>
+            <img 
+              src="/attached_assets/Screenshot_2025-12-24_at_1.26.50_PM_1766618920179.png" 
+              alt="The Hula Binder Logo" 
+              className="h-12 w-auto drop-shadow-lg"
+            />
             <span className="font-heading font-bold text-xl tracking-tight text-white drop-shadow-md">The Hula Binder</span>
           </div>
 
