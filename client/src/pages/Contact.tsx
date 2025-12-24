@@ -17,6 +17,7 @@ import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 import { ArrowLeft, Send } from "lucide-react";
 import { Link } from "wouter";
+import { useMutation } from "@tanstack/react-query";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -32,9 +33,11 @@ const formSchema = z.object({
   message: z.string().optional(),
 });
 
+type FormData = z.infer<typeof formSchema>;
+
 export default function Contact() {
   const { toast } = useToast();
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
@@ -45,27 +48,41 @@ export default function Contact() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    const subject = "The Hula Binder: Demo Request";
-    const body = `Aloha Arleen,
+  const contactMutation = useMutation({
+    mutationFn: async (data: FormData) => {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-I would like to request a demo of The Hula Binder.
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || "Failed to submit demo request");
+      }
 
-Name: ${values.name}
-Hālau Name: ${values.halauName}
-Email: ${values.email}
-Phone: ${values.phone || 'N/A'}
+      return response.json();
+    },
+    onSuccess: () => {
+      toast({
+        title: "Request Sent!",
+        description: "Mahalo! We will be in touch shortly to schedule your demo.",
+      });
+      form.reset();
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to submit demo request. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
 
-Message:
-${values.message || 'N/A'}`;
-
-    window.location.href = `mailto:arleen@haumeatechnologies.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    toast({
-      title: "Opening Email Client",
-      description: "Mahalo! We've prepared an email for you to send to Arleen.",
-    });
-    form.reset();
+  function onSubmit(values: FormData) {
+    contactMutation.mutate(values);
   }
 
   return (
@@ -138,7 +155,7 @@ ${values.message || 'N/A'}`;
                         <FormItem>
                           <FormLabel>Your Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="Kumu Hula" {...field} />
+                            <Input placeholder="Kumu Hula" {...field} data-testid="input-name" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -151,7 +168,7 @@ ${values.message || 'N/A'}`;
                         <FormItem>
                           <FormLabel>Hālau Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="Hālau Hula" {...field} />
+                            <Input placeholder="Hālau Hula" {...field} data-testid="input-halau-name" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -164,7 +181,7 @@ ${values.message || 'N/A'}`;
                         <FormItem>
                           <FormLabel>Email Address</FormLabel>
                           <FormControl>
-                            <Input placeholder="aloha@example.com" {...field} />
+                            <Input placeholder="aloha@example.com" {...field} data-testid="input-email" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -177,7 +194,7 @@ ${values.message || 'N/A'}`;
                         <FormItem>
                           <FormLabel>Phone Number (Optional)</FormLabel>
                           <FormControl>
-                            <Input placeholder="(808) 555-0123" {...field} />
+                            <Input placeholder="(808) 555-0123" {...field} data-testid="input-phone" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -194,14 +211,26 @@ ${values.message || 'N/A'}`;
                               placeholder="Any specific questions or preferred times?" 
                               className="resize-none min-h-[100px]"
                               {...field} 
+                              data-testid="input-message"
                             />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
-                    <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white h-12 text-lg">
-                      <Send className="w-4 h-4 mr-2" /> Request Demo
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-primary hover:bg-primary/90 text-white h-12 text-lg"
+                      disabled={contactMutation.isPending}
+                      data-testid="button-submit"
+                    >
+                      {contactMutation.isPending ? (
+                        <>Sending...</>
+                      ) : (
+                        <>
+                          <Send className="w-4 h-4 mr-2" /> Request Demo
+                        </>
+                      )}
                     </Button>
                   </form>
                 </Form>
