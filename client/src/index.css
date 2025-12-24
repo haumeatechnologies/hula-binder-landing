@@ -50,13 +50,13 @@
 
 /* CULTURAL / ORGANIC THEME */
 :root {
-  /* Warm Sand / Paper Background */
-  --background: 40 20% 97%;
+  /* Lauhala Cream Background */
+  --background: 40 30% 93%;
   /* Dark Charcoal / Lava Rock for Text */
   --foreground: 140 10% 15%;
 
-  /* White for cards to pop against sand */
-  --card: 0 0% 100%;
+  /* Soft cream for cards */
+  --card: 40 25% 97%;
   --card-foreground: 140 10% 15%;
 
   --popover: 0 0% 100%;
