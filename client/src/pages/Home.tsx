@@ -411,11 +411,12 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-1 md:col-span-2">
                <div className="flex items-center gap-2 mb-6">
-                  <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-                      <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
-                      <path d="M8 12c0-2 2-4 4-4s4 2 4 4" />
-                    </svg>
+                  <div className="w-9 h-9 rounded-full bg-white/90 flex items-center justify-center overflow-hidden">
+                    <img 
+                      src={logoImage} 
+                      alt="The Hula Binder Logo" 
+                      className="w-7 h-7 object-cover"
+                    />
                   </div>
                   <span className="font-heading font-bold text-xl text-white">The Hula Binder</span>
                </div>
