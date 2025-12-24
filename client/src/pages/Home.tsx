@@ -54,11 +54,11 @@ export default function Home() {
       <nav className="fixed w-full z-50 bg-black/30 backdrop-blur-sm">
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center overflow-hidden shadow-lg">
+            <div className="w-9 h-9 rounded-full bg-white/90 flex items-center justify-center overflow-hidden shadow-lg">
               <img 
                 src={logoImage} 
                 alt="The Hula Binder Logo" 
-                className="w-10 h-10 object-cover"
+                className="w-7 h-7 object-cover"
               />
             </div>
             <span className="font-heading font-bold text-xl tracking-tight text-white drop-shadow-md">The Hula Binder</span>
