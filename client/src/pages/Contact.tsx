@@ -43,7 +43,7 @@ export default function Contact() {
     defaultValues: {
       name: "",
       halauName: "",
-      email: "",
+      email: "aloha@hula.com",
       phone: "",
       message: "",
     },
