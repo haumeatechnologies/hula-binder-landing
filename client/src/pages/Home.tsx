@@ -15,6 +15,7 @@ import {
   ChevronRight,
   Check
 } from "lucide-react";
+import { Link } from "wouter";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
@@ -67,9 +68,11 @@ export default function Home() {
             <button onClick={() => scrollToSection('features')} className="text-sm font-medium hover:text-primary transition-colors">Features</button>
             <button onClick={() => scrollToSection('benefits')} className="text-sm font-medium hover:text-primary transition-colors">Benefits</button>
             <button onClick={() => scrollToSection('pricing')} className="text-sm font-medium hover:text-primary transition-colors">Pricing</button>
-            <Button className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20">
-              Get Started
-            </Button>
+            <Link href="/contact">
+              <Button className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20">
+                Get Started
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -84,7 +87,9 @@ export default function Home() {
             <button onClick={() => scrollToSection('features')} className="text-left font-medium py-2">Features</button>
             <button onClick={() => scrollToSection('benefits')} className="text-left font-medium py-2">Benefits</button>
             <button onClick={() => scrollToSection('pricing')} className="text-left font-medium py-2">Pricing</button>
-            <Button className="w-full bg-primary text-white">Get Started</Button>
+            <Link href="/contact">
+              <Button className="w-full bg-primary text-white">Get Started</Button>
+            </Link>
           </div>
         )}
       </nav>
@@ -124,12 +129,11 @@ export default function Home() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button size="lg" className="h-14 px-8 text-lg bg-primary hover:bg-primary/90 text-white border-0 shadow-xl shadow-black/20">
-                Start Your Journey
-              </Button>
-              <Button size="lg" variant="outline" className="h-14 px-8 text-lg bg-white/10 hover:bg-white/20 text-white border-white/40 backdrop-blur-sm">
-                View Proposal
-              </Button>
+              <Link href="/contact">
+                <Button size="lg" className="h-14 px-8 text-lg bg-primary hover:bg-primary/90 text-white border-0 shadow-xl shadow-black/20">
+                  Start Your Journey
+                </Button>
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -440,7 +444,7 @@ export default function Home() {
             <div>
               <h4 className="text-white font-bold mb-6">Contact</h4>
               <ul className="space-y-4 text-sm">
-                <li><a href="#" className="hover:text-primary transition-colors">Schedule Demo</a></li>
+                <li><Link href="/contact" className="hover:text-primary transition-colors">Schedule Demo</Link></li>
                 <li><a href="#" className="hover:text-primary transition-colors">Support</a></li>
                 <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
               </ul>
