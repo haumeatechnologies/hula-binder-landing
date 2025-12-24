@@ -46,10 +46,24 @@ export default function Contact() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    const subject = "The Hula Binder: Demo Request";
+    const body = `Aloha Arleen,
+
+I would like to request a demo of The Hula Binder.
+
+Name: ${values.name}
+Hālau Name: ${values.halauName}
+Email: ${values.email}
+Phone: ${values.phone || 'N/A'}
+
+Message:
+${values.message || 'N/A'}`;
+
+    window.location.href = `mailto:arleen@haumeatechnologies.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
     toast({
-      title: "Request Sent",
-      description: "Mahalo! We will be in touch shortly to schedule your demo.",
+      title: "Opening Email Client",
+      description: "Mahalo! We've prepared an email for you to send to Arleen.",
     });
     form.reset();
   }
