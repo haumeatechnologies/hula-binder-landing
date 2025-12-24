@@ -431,7 +431,7 @@ export default function Home() {
               <ul className="space-y-4 text-sm">
                 <li><Link href="/contact" className="hover:text-primary transition-colors">Schedule Demo</Link></li>
                 <li><a href="#" className="hover:text-primary transition-colors">Support</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
+                <li><Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
               </ul>
             </div>
           </div>
