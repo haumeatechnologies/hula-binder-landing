@@ -17,7 +17,7 @@ import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 import { ArrowLeft, Send } from "lucide-react";
 import { Link } from "wouter";
-import { useMutation } from "@tanstack/react-query";
+import { useState } from "react";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -37,6 +37,7 @@ type FormData = z.infer<typeof formSchema>;
 
 export default function Contact() {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -48,41 +49,42 @@ export default function Contact() {
     },
   });
 
-  const contactMutation = useMutation({
-    mutationFn: async (data: FormData) => {
-      const response = await fetch("/api/contact", {
+  async function onSubmit(values: FormData) {
+    setIsSubmitting(true);
+    
+    try {
+      const formData = new URLSearchParams();
+      formData.append("form-name", "demo-request");
+      formData.append("name", values.name);
+      formData.append("halauName", values.halauName);
+      formData.append("email", values.email);
+      formData.append("phone", values.phone || "");
+      formData.append("message", values.message || "");
+
+      const response = await fetch("/", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formData.toString(),
       });
 
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error || "Failed to submit demo request");
+      if (response.ok) {
+        toast({
+          title: "Request Sent!",
+          description: "Mahalo! We will be in touch shortly to schedule your demo.",
+        });
+        form.reset();
+      } else {
+        throw new Error("Form submission failed");
       }
-
-      return response.json();
-    },
-    onSuccess: () => {
-      toast({
-        title: "Request Sent!",
-        description: "Mahalo! We will be in touch shortly to schedule your demo.",
-      });
-      form.reset();
-    },
-    onError: (error: Error) => {
+    } catch (error) {
       toast({
         title: "Error",
-        description: error.message || "Failed to submit demo request. Please try again.",
+        description: "Failed to submit demo request. Please try again.",
         variant: "destructive",
       });
-    },
-  });
-
-  function onSubmit(values: FormData) {
-    contactMutation.mutate(values);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -146,8 +148,18 @@ export default function Contact() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
+                {/* Hidden form for Netlify to detect */}
+                <form name="demo-request" data-netlify="true" hidden>
+                  <input type="text" name="name" />
+                  <input type="text" name="halauName" />
+                  <input type="email" name="email" />
+                  <input type="tel" name="phone" />
+                  <textarea name="message"></textarea>
+                </form>
+
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                    <input type="hidden" name="form-name" value="demo-request" />
                     <FormField
                       control={form.control}
                       name="name"
@@ -221,10 +233,10 @@ export default function Contact() {
                     <Button 
                       type="submit" 
                       className="w-full bg-primary hover:bg-primary/90 text-white h-12 text-lg"
-                      disabled={contactMutation.isPending}
+                      disabled={isSubmitting}
                       data-testid="button-submit"
                     >
-                      {contactMutation.isPending ? (
+                      {isSubmitting ? (
                         <>Sending...</>
                       ) : (
                         <>

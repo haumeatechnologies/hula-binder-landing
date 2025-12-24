@@ -25,13 +25,19 @@ A beautiful landing page for The Hula Binder platform - a digital tool designed 
 - `users`: User authentication (not currently used)
 - `contact_requests`: Stores demo request submissions with name, hālau name, email, phone, and message
 
-## Email Integration Note
-**Email notifications are NOT currently set up.** The user dismissed the Resend email integration during setup. Contact form submissions are saved to the database but no email is sent to arleen@haumeatechnologies.com.
+## Deployment Plan
+**This site is configured for Netlify deployment with Netlify Forms.**
 
-To add email notifications in the future:
-1. Set up an email service (Resend, SendGrid, or similar)
-2. Store API credentials as secrets
-3. Update `server/routes.ts` POST `/api/contact` endpoint to send emails after saving to database
+The contact form uses Netlify Forms for submission handling:
+- Form submissions are automatically captured by Netlify
+- Email notifications can be configured in Netlify dashboard (Site settings > Forms > Form notifications)
+- Set notification email to: arleen@haumeatechnologies.com
+- Subject line suggestion: "The Hula Binder: Demo Request"
+
+### To deploy on Netlify:
+1. Build the static frontend: `npm run build`
+2. Deploy the `dist/public` folder to Netlify
+3. Configure form notifications in Netlify dashboard
 
 ## Design
 - Color scheme: Warm earth tones (forest green, clay, sand) reflecting Hawaiian nature
